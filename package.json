@@ -1,0 +1,29 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "My exquisite Nuxt.js project",
+  "author": "Nasir Khan",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js -w server -w apollo",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc2.2",
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/bulma": "^1.2.0",
+    "apollo-link": "^1.2.3",
+    "apollo-link-http": "^1.5.5",
+    "apollo-server-express": "^2.1.0",
+    "chalk": "^2.4.1",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3",
+    "graphql": "^14.0.2",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
