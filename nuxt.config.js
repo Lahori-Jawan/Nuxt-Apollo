@@ -1,8 +1,12 @@
 const pkg = require('./package')
-
+// let endpoint = process.env.HOST && process.env.HOST + `:${process.env.PORT}` + '/' + process.env.API
 module.exports = {
   mode: 'universal',
-
+  env: {
+    URL: process.env.PROD_URL,
+    PORTT: process.env.PORT,
+    ENDPOINT: process.env.HTTP_ENDPOINT
+  },
   /*
   ** Headers of the page
   */
@@ -47,14 +51,15 @@ module.exports = {
   ],
   apollo: {
     clientConfigs: {
-      default: {
-        // required (graphql api endpoint)
-        httpEndpoint: 'http://localhost:3000/graphql',
-        // You can use `wss` for secure connection (recommended in production)
-        // Use `null` to disable subscriptions
-        // wsEndpoint: 'ws://localhost:4000', //! optional (later)
-        // LocalStorage token
-      }
+      default: '~/plugins/apollo.js'
+      // default: {
+      //   // required (graphql api endpoint)
+      //   httpEndpoint: `${process.env.HOST}:${process.env.PORT}/${process.env.ENDPOINT}` || 'http://localhost:3000/graphql',
+      //   // You can use `wss` for secure connection (recommended in production)
+      //   // Use `null` to disable subscriptions
+      //   // wsEndpoint: 'ws://localhost:4000', //! optional (later)
+      //   // LocalStorage token
+      // }
     }
   },
   /*

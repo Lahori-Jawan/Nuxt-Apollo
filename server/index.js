@@ -4,10 +4,11 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
 const APOLLOSERVER = require('../apollo/server')
+const path = `/${process.env.HTTP_ENDPOINT}` || '/api/graphql'
 
 const app = express()
 const host = process.env.HOST || 'localhost'
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 app.set('port', port)
 
@@ -16,11 +17,12 @@ let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
 APOLLOSERVER.applyMiddleware({
-  app
+  app,
+  path
 })
 
 const CheckRequest = (req, res, next) => {
-  console.log('express req object', req.headers)
+  // console.log('express req object', req.headers)
   next();
 }
 
