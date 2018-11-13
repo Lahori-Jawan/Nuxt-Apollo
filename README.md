@@ -1,22 +1,19 @@
-# demo
+# Demo
 
 > My exquisite Nuxt.js project
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-$ yarn install
+# build image
+$ docker build -t dev_prod .
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+# run container based off dev_prod image
+$ docker run -it -p 4000:4000 --env-file ./.env --rm --name dp dev_prod
 
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
-```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+# store followings in .env file in project root
+PROD_URL=localhost
+PORT=4000
+HTTP_ENDPOINT=my/graphql
+# default setup is for development. for production uncomment following line
+# NODE_ENV=production
